@@ -2,8 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
 import time
 
 def login ():
@@ -19,4 +17,5 @@ def login ():
     driver.find_element_by_xpath('//input[@placeholder="Пароль"]').send_keys('1234')
     driver.find_element_by_xpath('//button[@type="submit"]').click()
     time.sleep(4)
+
     return driver

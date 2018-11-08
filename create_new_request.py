@@ -5,10 +5,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-from Login import login
 
+from Login import login
 driver=login()
 def new_request ():
+
     driver.find_element_by_xpath('/html//button[@id="createNew"]').click()
     # выбор адреса
     driver.find_element_by_xpath('//div[@class="right"]/descendant::input[@class="ant-input ant-select-search__field"]').send_keys('10-я Парковая улица, дом 15')
@@ -81,8 +82,16 @@ def new_request ():
     driver.find_element_by_xpath('//div[@class="left"]//textarea[@class="ant-input"]').send_keys('Описание проблемы')
     # driver.find_element_by_xpath('//div[@id="new-request"]//div[@class="close-button"]').click()
 
-
     #кнопка СОХРАНИТЬ
     driver.find_element_by_xpath('//button[@title="Сохранить"]').click()
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located(
+            (By.XPATH, '//div[@id="request_created"]'))
+    )
+    text = driver.find_element_by_xpath('//div[@id="request_created"]').text
+    request_number=text[:-2]
+    request_number= request_number.replace("Была создана заявка ","")
+    driver.find_element_by_xpath('//div[@id="new-request"]//div[@class="close-button"]').click()
+    print(request_number)
+    return request_number
 
-    return new_request
