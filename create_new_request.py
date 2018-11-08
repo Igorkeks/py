@@ -6,23 +6,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 from Login import login
-# driver = webdriver.Chrome()
 
 driver=login()
 def new_request ():
-
-    # driver = webdriver.Chrome()
-    # driver.get("http://213.79.88.85/")
-    # driver.set_window_size(1200,1200)
-    # WebDriverWait(driver, 10).until(
-    #  EC.presence_of_element_located((By.XPATH, '//input[@placeholder="Логин"]'))
-    #  )
-    # print(driver.find_element_by_xpath('//input[@placeholder="Логин"]').is_displayed())
-    # print(driver.find_element_by_xpath('//input[@placeholder="Логин"]').is_enabled())
-    # driver.find_element_by_xpath('//input[@placeholder="Логин"]').send_keys('Support')
-    # driver.find_element_by_xpath('//input[@placeholder="Пароль"]').send_keys('1234')
-    # driver.find_element_by_xpath('//button[@type="submit"]').click()
-    # time.sleep(4)
     driver.find_element_by_xpath('/html//button[@id="createNew"]').click()
     # выбор адреса
     driver.find_element_by_xpath('//div[@class="right"]/descendant::input[@class="ant-input ant-select-search__field"]').send_keys('10-я Парковая улица, дом 15')
@@ -88,15 +74,15 @@ def new_request ():
     driver.find_element_by_xpath('//div[@class="ant-select-dropdown ant-select-dropdown--single ant-select-dropdown-placement-bottomLeft"]//li[@title="телефон"]').click()
     #конц выбора источника
 
+    #выбор типа заявки
     driver.find_element_by_xpath('//span[@class="ant-select-selection__rendered"]').click()
     driver.find_element_by_xpath('//div[@class="tree-content-height-limiter"]//input[@class="ant-select-search__field" and @role="textbox"]').send_keys('Благоустройство Другое')
     driver.find_element_by_xpath('//span[@class="ant-select-tree-node-content-wrapper ant-select-tree-node-content-wrapper-normal"]').click()
     driver.find_element_by_xpath('//div[@class="left"]//textarea[@class="ant-input"]').send_keys('Описание проблемы')
-    # driver.close()
+    # driver.find_element_by_xpath('//div[@id="new-request"]//div[@class="close-button"]').click()
+
+
     #кнопка СОХРАНИТЬ
-    # driver.find_element_by_xpath('//button[@title="Сохранить"]').click()
+    driver.find_element_by_xpath('//button[@title="Сохранить"]').click()
+
     return new_request
-
-
-
-

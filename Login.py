@@ -2,8 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
+
 
 import time
 
@@ -16,8 +15,8 @@ def login ():
     )
     # print(driver.find_element_by_xpath('//input[@placeholder="Логин"]').is_displayed())
     # print(driver.find_element_by_xpath('//input[@placeholder="Логин"]').is_enabled())
-    driver.find_element_by_xpath('//input[@placeholder="Логин"]').send_keys('')
-    driver.find_element_by_xpath('//input[@placeholder="Пароль"]').send_keys('')
+    driver.find_element_by_xpath('//input[@placeholder="Логин"]').send_keys('Support')
+    driver.find_element_by_xpath('//input[@placeholder="Пароль"]').send_keys('1234')
     driver.find_element_by_xpath('//button[@type="submit"]').click()
     time.sleep(4)
     return driver
